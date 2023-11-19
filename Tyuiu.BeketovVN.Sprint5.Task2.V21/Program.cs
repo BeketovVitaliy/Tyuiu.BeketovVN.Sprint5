@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Tyuiu.BeketovVN.Sprint5.Task1.V7.Lib;
+using Tyuiu.BeketovVN.Sprint5.Task2.V21.Lib;
 
-namespace Tyuiu.BeketovVN.Sprint5.Task1.V7
+namespace Tyuiu.BeketovVN.Sprint5.Task2.V21
 {
     internal class Program
     {
@@ -16,22 +16,29 @@ namespace Tyuiu.BeketovVN.Sprint5.Task1.V7
             Console.WriteLine("********************************************************************************");
             Console.WriteLine("* Спринт #5                                                                    *");
             Console.WriteLine("* Тема: Класс File. Запись данных в текстовый файл                             *");
-            Console.WriteLine("* Задание #1                                                                   *");
+            Console.WriteLine("* Задание #0                                                                   *");
             Console.WriteLine("* Вариант #3                                                                   *");
             Console.WriteLine("* Выполнил Бекетов В.Н.   | ИИПб-23-2                                          *");
             Console.WriteLine("********************************************************************************");
             Console.WriteLine("* УСЛОВИЕ:                                                                     *");
-            Console.WriteLine("* Дано выражение вычислить его значение при x = 3, результат сохранить в       *");
-            Console.WriteLine("* текстовый файл OutPutFileTask0.txt и вывести на консоль. Округлить до трёх   *");
-            Console.WriteLine("* знаков после запятой.                                                        *");
+            Console.WriteLine("* Дан двумерный целочисленный массив 3 на 3 элементов, заполненный значениями  *");
+            Console.WriteLine("* с клавиатуры. Заменить нечетные элементы массива на 0.                       *");
+            Console.WriteLine("* Результат сохранить в файл OutPutFileTask2.csv и вывести на консоль.         *");
             Console.WriteLine("********************************************************************************");
             Console.WriteLine("* ИСХОДНЫЕ ДАННЫЕ:                                                             *");
             Console.WriteLine("********************************************************************************");
-            int start = -5;
-            int stop = 5;
-            Console.WriteLine("Начало шага = " + start);
-            Console.WriteLine("Конец шага = " + stop);
-            string res = ds.SaveToFileTextData(start, stop);
+            int[,] matrix = new int[3, 3] { { 4, 8, 5 }, { 6, 3, 2 }, { 9, 4, 5 } };
+            int rows = matrix.GetUpperBound(0) + 1;
+            int columns = matrix.Length / rows;
+            for (int i = 0; i < rows; i++)
+            {
+                for (int j = 0; j < columns; j++)
+                {
+                    Console.Write(matrix[i, j] + "\t");
+                }
+                Console.WriteLine();
+            }
+            string res = ds.SaveToFileTextData(matrix);
             Console.WriteLine("********************************************************************************");
             Console.WriteLine("* РЕЗУЛЬТАТ:                                                                   *");
             Console.WriteLine("********************************************************************************");
