@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Tyuiu.BeketovVN.Sprint5.Task4.V24.Lib;
+using Tyuiu.BeketovVN.Sprint5.Task5.V2.Lib;
 
-namespace Tyuiu.BeketovVN.Sprint5.Task4.V24
+namespace Tyuiu.BeketovVN.Sprint5.Task5.V2
 {
     internal class Program
     {
@@ -26,7 +26,7 @@ namespace Tyuiu.BeketovVN.Sprint5.Task4.V24
             Console.WriteLine("********************************************************************************");
             Console.WriteLine("* ИСХОДНЫЕ ДАННЫЕ:                                                             *");
             Console.WriteLine("********************************************************************************");
-            string path = $@"C:\DataSprint5\InPutDataFileTask4V24.txt";
+            string path = $@"C:\DataSprint5\InPutDataFileTask5V2.txt";
             Console.WriteLine("Данные находятся в файле: " + path);
             Console.WriteLine("********************************************************************************");
             Console.WriteLine("* РЕЗУЛЬТАТ:                                                                   *");
