@@ -13,36 +13,44 @@ namespace Tyuiu.BeketovVN.Sprint5.Task7.V7.Lib
     {
         public string LoadDataAndSave(string path)
         {
-            string pathSaveFile = @"C:\DataSprint5\OutPutDataFileTask7V7.txt";
-            FileInfo fileinfo = new FileInfo(pathSaveFile);
-            bool fileexists = fileinfo.Exists;
+            string outputFilePath = @"C:\DataSprint5\OutPutDataFileTask7V7.txt";
 
-            if (fileexists)
-            {
-                File.Delete(pathSaveFile);
-            }
-            string strLine = "";
-            using (StreamReader reader = new StreamReader(path))
-            {
-                string line;
-                while ((line = reader.ReadLine()) != null)
+            
+                // Проверяем существование исходного файла
+                if (File.Exists(path))
                 {
-                    for (int i = 0; i < line.Length; i++)
+                    // Создаем новый файл для записи результата
+                    using (StreamWriter writer = new StreamWriter(outputFilePath))
                     {
-                        char c = line[i];
-                        if (((c >= 'А') && (c <= 'Я')) == false)
+                        // Читаем все строки из исходного файла
+                        using (StreamReader reader = new StreamReader(path))
                         {
-                            strLine = strLine + line[i];
+                            string line;
+                            while ((line = reader.ReadLine()) != null)
+                            {
+                                string lineWithoutEnglishWords = RemoveEnglishWords(line);
+                                // Записываем результат в новый файл
+                                writer.WriteLine(lineWithoutEnglishWords);
+                            }
                         }
-
                     }
 
-                    File.AppendAllText(pathSaveFile, strLine + Environment.NewLine);
-                    strLine = "";
+                    return outputFilePath;
                 }
+                else
+                {
+                    return "Исходный файл не найден.";
+                }
+            
+        }
 
-                return pathSaveFile;
-            }
+        // Метод для удаления английских слов из строки
+        private string RemoveEnglishWords(string input)
+        {
+            // Используем регулярное выражение для поиска английских слов
+            string pattern = @"\b[A-Za-z]+\b";
+            string result = Regex.Replace(input, pattern, string.Empty);
+            return result;
         }
     }
 }
